@@ -37,7 +37,7 @@ export default function RegistrationScreen({ navigation }) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('HomeScreen', { user: data })
+                        navigation.navigate('Save Notes', { user: data })
                     })
                     .catch((error) => {
                         alert(error)
