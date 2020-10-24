@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens'
+import { LoginScreen, RegistrationScreen, SaveNotesScreen, ViewNotesScreen } from './src/screens'
 
 import { firebase } from './src/firebase/config'
 
@@ -18,6 +18,7 @@ export default function App() {
     const [loading, setLoading] = useState(true)
     const [user, setUser] = useState(null)
 
+    //Persist user login.
     useEffect(() => {
         const usersRef = firebase.firestore().collection('users');
         firebase.auth().onAuthStateChanged(user => {
@@ -43,14 +44,21 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator>
                 {user ? (
-                    <Stack.Screen name="HomeScreen">
-                        {props => <HomeScreen {...props} extraData={user} />}
-                    </Stack.Screen>
+                    <>
+                        <Stack.Screen name="Save Notes">
+                            {props => <SaveNotesScreen {...props} user={user} />}
+                        </Stack.Screen>
+                        <Stack.Screen name="View Notes">
+                            {props => <ViewNotesScreen {...props} user={user} />}
+                        </Stack.Screen>
+                        <Stack.Screen name="Login" component={LoginScreen} />
+                    </>
                 ) : (
                         <>
                             <Stack.Screen name="Login" component={LoginScreen} />
                             <Stack.Screen name="Registration" component={RegistrationScreen} />
-                            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+                            <Stack.Screen name="Save Notes" component={SaveNotesScreen} />
+                            <Stack.Screen name="View Notes" component={ViewNotesScreen} />
                         </>
                     )}
             </Stack.Navigator>
