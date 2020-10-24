@@ -8,9 +8,7 @@ export default StyleSheet.create({
         paddingTop: 23
     },
     notesCard: {
-        backgroundColor: "red",
         marginBottom: 10,
-        // marginTop: 10
     },
     inputTitle: {
         margin: 15,

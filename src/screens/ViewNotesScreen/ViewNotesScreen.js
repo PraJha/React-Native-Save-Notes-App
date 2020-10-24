@@ -54,8 +54,8 @@ export default function ViewNotes(props) {
                 <ScrollView>
                     {userNotesList.map((notes) => (
                         <View style={styles.notesCard}>
-                        <Card style={{marginBottom: -10}}>
-                            <Card.Title style={{backgroundColor: "green"}}><Text>{notes.Title}</Text></Card.Title>
+                        <Card>
+                            <Card.Title><Text>{notes.Title}</Text></Card.Title>
                             {notes.Time ? <Card.FeaturedSubtitle style={{ color: "red", fontSize: 10}}>{notes.Time}</Card.FeaturedSubtitle> : <Text></Text>}
                             <Text style={{ marginBottom: 5 }}>
                                 {notes.Details}

@@ -16,9 +16,7 @@ var _default = _reactNative.StyleSheet.create({
     paddingTop: 23
   },
   notesCard: {
-    backgroundColor: "red",
-    marginBottom: 10 // marginTop: 10
-
+    marginBottom: 10
   },
   inputTitle: {
     margin: 15,
