@@ -51,6 +51,7 @@ export default function App() {
                         <Stack.Screen name="View Notes">
                             {props => <ViewNotesScreen {...props} user={user} />}
                         </Stack.Screen>
+                        <Stack.Screen name="Registration" component={RegistrationScreen} />
                         <Stack.Screen name="Login" component={LoginScreen} />
                     </>
                 ) : (
