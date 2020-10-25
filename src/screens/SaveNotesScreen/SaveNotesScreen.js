@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import { firebase } from '../../firebase/config'
 import { statusBarBackgroundColor } from '../../Utils/ScreenUtils'
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
 
@@ -62,29 +63,17 @@ export default function SaveNotes(props) {
 
                 <TextInput style={styles.inputDetails}
                     underlineColorAndroid="transparent"
-                    placeholder="Password"
+                    placeholder="Content"
                     placeholderTextColor="#9a73ef"
                     autoCapitalize="none"
                     multiline={true}
                     onChangeText={(details) => handleDetails(details, setDetails)} />
-
-                <TouchableOpacity
-                    style={styles.submitButton}
-                    onPress={() => saveNotes(title, details, currLoggedInUser)}>
-                    <Text style={styles.submitButtonText}> Save Notes </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.viewNoteButton}
-                    onPress={() => viewNote(props.navigation, currLoggedInUser)}>
-                    <Text style={styles.submitButtonText}> View Notes </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.viewNoteButton}
-                    onPress={() => loginScreen(props.navigation)}>
-                    <Text style={styles.submitButtonText}> Login </Text>
-                </TouchableOpacity>
+                <Text>
+                    <Ionicons name="md-home" size={50} style={{ marginHorizontal: 50 }} color="black" onPress={() => loginScreen(props.navigation)} />
+                    <AntDesign name="checkcircle" size={50} style={{ marginHorizontal: 100 }} color="black" onPress={() => loginScreen(props.navigation)} />
+                    <AntDesign name="closecircle" size={50} style={{ marginHorizontal: 100 }} color="black" />
+                    <AntDesign name="back" size={50} style={{ marginHorizontal: 100 }} color="black" onPress={() => viewNote(props.navigation, currLoggedInUser)} />
+                </Text>
             </View>
         </>
     )

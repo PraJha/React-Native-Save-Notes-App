@@ -10,6 +10,10 @@ export default StyleSheet.create({
     notesCard: {
         marginBottom: 10,
     },
+    notesAddIcon: {
+        marginTop: 10,
+        marginLeft: windowWidth - 70
+    },
     inputTitle: {
         margin: 15,
         height: 40,

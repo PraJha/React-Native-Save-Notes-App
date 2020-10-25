@@ -4,6 +4,7 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 import { firebase } from '../../firebase/config'
 import { statusBarBackgroundColor } from '../../Utils/ScreenUtils'
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
 
@@ -52,6 +53,7 @@ export default function ViewNotes(props) {
     return (
         <>
             <StatusBar barStyle="dark-content" hidden={false} backgroundColor={statusBarBackgroundColor} translucent={true} />
+            <AntDesign name="pluscircle" size={50} style={styles.notesAddIcon} color={"black"} onPress={() => saveNote(props.navigation)}/>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     {userNotesList.map((notes) => (
@@ -66,11 +68,6 @@ export default function ViewNotes(props) {
                         </View>
                     )
                     )}
-                    <TouchableOpacity
-                        style={styles.viewNoteButton}
-                        onPress={() => saveNote(props.navigation)}>
-                        <Text style={styles.submitButtonText}> Back to Save Notes </Text>
-                    </TouchableOpacity>
 
                     <TouchableOpacity
                         style={styles.viewNoteButton}
