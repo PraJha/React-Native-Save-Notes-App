@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StatusBar } from 'react-native'
 import moment from 'moment';
 
 import { firebase } from '../../firebase/config'
+import { statusBarBackgroundColor } from '../../Utils/ScreenUtils'
 
 import styles from './styles';
 
@@ -49,39 +50,42 @@ export default function SaveNotes(props) {
     const [details, setDetails] = useState("")
 
     return (
-        <View style={styles.container}>
-            <TextInput style={styles.inputTitle}
-                underlineColorAndroid="transparent"
-                placeholder="Title"
-                placeholderTextColor="#9a73ef"
-                autoCapitalize="none"
-                onChangeText={(title) => handleTitle(title, setTitle)} />
+        <>
+            <StatusBar barStyle="dark-content" hidden={false} backgroundColor={statusBarBackgroundColor} translucent={true} />
+            <View style={styles.container}>
+                <TextInput style={styles.inputTitle}
+                    underlineColorAndroid="transparent"
+                    placeholder="Title"
+                    placeholderTextColor="#9a73ef"
+                    autoCapitalize="none"
+                    onChangeText={(title) => handleTitle(title, setTitle)} />
 
-            <TextInput style={styles.inputDetails}
-                underlineColorAndroid="transparent"
-                placeholder="Password"
-                placeholderTextColor="#9a73ef"
-                autoCapitalize="none"
-                multiline={true}
-                onChangeText={(details) => handleDetails(details, setDetails)} />
+                <TextInput style={styles.inputDetails}
+                    underlineColorAndroid="transparent"
+                    placeholder="Password"
+                    placeholderTextColor="#9a73ef"
+                    autoCapitalize="none"
+                    multiline={true}
+                    onChangeText={(details) => handleDetails(details, setDetails)} />
 
-            <TouchableOpacity
-                style={styles.submitButton}
-                onPress={() => saveNotes(title, details, currLoggedInUser)}>
-                <Text style={styles.submitButtonText}> Save Notes </Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.submitButton}
+                    onPress={() => saveNotes(title, details, currLoggedInUser)}>
+                    <Text style={styles.submitButtonText}> Save Notes </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.viewNoteButton}
-                onPress={() => viewNote(props.navigation, currLoggedInUser)}>
-                <Text style={styles.submitButtonText}> View Notes </Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.viewNoteButton}
+                    onPress={() => viewNote(props.navigation, currLoggedInUser)}>
+                    <Text style={styles.submitButtonText}> View Notes </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.viewNoteButton}
-                onPress={() => loginScreen(props.navigation)}>
-                <Text style={styles.submitButtonText}> Login </Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity
+                    style={styles.viewNoteButton}
+                    onPress={() => loginScreen(props.navigation)}>
+                    <Text style={styles.submitButtonText}> Login </Text>
+                </TouchableOpacity>
+            </View>
+        </>
     )
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image, SafeAreaView, ScrollView, StatusBar } from 'react-native'
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 import { firebase } from '../../firebase/config'
+import { statusBarBackgroundColor } from '../../Utils/ScreenUtils'
 
 import styles from './styles';
 
@@ -50,17 +51,18 @@ export default function ViewNotes(props) {
 
     return (
         <>
+            <StatusBar barStyle="dark-content" hidden={false} backgroundColor={statusBarBackgroundColor} translucent={true} />
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     {userNotesList.map((notes) => (
                         <View style={styles.notesCard}>
-                        <Card>
-                            <Card.Title><Text>{notes.Title}</Text></Card.Title>
-                            {notes.Time ? <Card.FeaturedSubtitle style={{ color: "red", fontSize: 10}}>{notes.Time}</Card.FeaturedSubtitle> : <Text></Text>}
-                            <Text style={{ marginBottom: 5 }}>
-                                {notes.Details}
-                            </Text>
-                        </Card>
+                            <Card>
+                                <Card.Title><Text>{notes.Title}</Text></Card.Title>
+                                {notes.Time ? <Card.FeaturedSubtitle style={{ color: "red", fontSize: 10 }}>{notes.Time}</Card.FeaturedSubtitle> : <Text></Text>}
+                                <Text style={{ marginBottom: 5 }}>
+                                    {notes.Details}
+                                </Text>
+                            </Card>
                         </View>
                     )
                     )}

@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { LoginScreen, RegistrationScreen, SaveNotesScreen, ViewNotesScreen } from './src/screens'
 
 import { firebase } from './src/firebase/config'
+import { statusBarBackgroundColor } from './src/Utils/ScreenUtils'
 
 import { decode, encode } from 'base-64'
 if (!global.btoa) { global.btoa = encode }
@@ -42,7 +43,7 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: statusBarBackgroundColor } }}>
                 {user ? (
                     <>
                         <Stack.Screen name="Save Notes">
